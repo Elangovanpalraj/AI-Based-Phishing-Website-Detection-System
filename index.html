@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phishing Website Detection</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #444; }
+        label { display: inline-block; width: 300px; margin-top: 5px; }
+        input[type="text"] { width: 100px; }
+        input[type="submit"] { margin-top: 20px; padding: 10px 20px; }
+        h3 { color: green; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h2>🔐 Enter Website Feature Values</h2>
+    <form action="/predict" method="post">
+        {% for feature in features %}
+            <label>{{ feature }}:</label>
+            <input type="text" name="{{ feature }}" required><br>
+        {% endfor %}
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
